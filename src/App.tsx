@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useReducer, useMemo } from 'react';
 import './App.css';
+import EditProject from './components/edit-project/EditProject';
+import Home from './components/home/Home';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  initialState,
+  projectReducer,
+} from './state-management/useCustomState';
+import { StateContext } from './utils/createStateContext';
 
 function App() {
+  const [state, dispatch] = useReducer(projectReducer, initialState);
+  const stateValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <StateContext.Provider value={stateValue}>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/edit/:projectId' element={<EditProject />} />
+        </Routes>
+      </StateContext.Provider>
+    </Router>
   );
 }
 
