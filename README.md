@@ -1,6 +1,72 @@
-# Getting Started with Create React App
+# Projects dashboard overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application consists of a list of projects; each project has: a title, start and end date, an accordion that when unfolded shows a list of users full names and device serial numbers, and an edit button.
+
+On edit page you can see three tabs:
+General project data, users table, and devices table. Users and devices can also be deleted.
+
+<b>Implementation duration:</b> about 1 day (an hour of that deciding on ui and ux element while scrolling on Material-ui, 4-5 hours of consistant implementation)
+
+
+## Table of Contents
+- [Installation](#installation)
+- [Calculations](#calculations)
+- [Technical decisions](#technical-decisions)
+  - [Potential missing features](#Potential-missing-features)
+- [UI, UX decisions, accessibility](#ui-ux-decisions-accessibility)
+  - [Accessibility](#accessibility)
+- [Available Scripts](#available-scripts)
+  - [`npm start`](#npm-start)
+  - [`npm test`](#npm-test)
+  - [`npm run format`](#npm-run-format)
+
+## Installation
+
+To run this project, make sure you have Node.js and npm installed on your machine. You can download them from https://nodejs.org/.
+
+At the time this project is compatible with node v20.5.1, and npm version 9.8.0>, so it is recommended to have the same versions installed to avoid further complications.
+
+After having this requirements in place, you may run `npm install`, and then you can start te project by running `npm start`:
+
+```console
+npm install
+npm start
+```
+
+Now you can open http://localhost:3000 to view it in the browser.
+
+## Data calculations:
+
+The data source of this project, is from a few separate JSON files.
+
+What has been done in terms of state management, is to add device and user ids, in the form of array of numbers, to the project data.
+Also both device data and user data have been transformed to hash map, to make the data retrieval more efficient.
+
+### Potential missing features
+
+What I have in mind for completing this dashboard, is to have a separate users table (with the possiility to add and edit user there), and also a devices dashboard with the possibility to add or edit devices.
+
+Also on top of that, a separate form for adding new projects as well.
+
+That all would make this projects dashboard complete. My Estimation for adding these features would be an exttra 4 hours.
+
+## UI, UX decisions, accessibility
+
+Making an accessible UI, and an intuitive and user friendly UX, is always at forefront of my priorities.
+The page design is simple, and responsive.
+
+### Accesibility
+
+For the page accessibility, high contrast colors have been used.
+Each textfield has a label, name and id, and placeholder.
+At the end, I used chrome lighthouse tool, to check the page accessiibility score.
+
+Here are some accessibility resources that I utilized:
+
+* https://www.a11yproject.com/posts/how-to-write-accessible-forms/
+* https://www.w3.org/WAI/tutorials/forms/instructions
+* https://a11y-style-guide.com/style-guide/section-cards.html
+
 
 ## Available Scripts
 
@@ -11,36 +77,12 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
-### `npm run build`
+### `npm run format`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Runs Prettier through all files (except node_modules, build, and dist) to assure uniform syntax.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary. By running this command, you will format the code so that it's all the way syntactically consistant.
