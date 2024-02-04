@@ -1,15 +1,15 @@
 import { useReducer, useMemo } from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import EditProject from './components/edit-project/EditProject';
 import Home from './components/home/Home';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
 import {
   initialState,
   projectReducer,
 } from './state-management/useCustomState';
 import { StateContext } from './utils/createStateContext';
 
-function App() {
+const App = () => {
   const [state, dispatch] = useReducer(projectReducer, initialState);
   const stateValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
