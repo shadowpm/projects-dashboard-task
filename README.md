@@ -10,7 +10,7 @@ General project data, users table, and devices table. Users and devices can also
 
 ## Table of Contents
 - [Installation](#installation)
-- [Data calculations](#calculations)
+- [Data calculations](#data-calculations)
 - [Potential missing features](#Potential-missing-features)
 - [UI, UX decisions, accessibility](#ui-ux-decisions-accessibility)
   - [Accessibility](#accessibility)
