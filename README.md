@@ -54,7 +54,7 @@ That all would make this projects dashboard complete. My Estimation for adding t
 Making an accessible UI, and an intuitive and user friendly UX, is always at forefront of my priorities.
 The page design is simple, and responsive.
 
-### Accesibility
+### Accessibility
 
 For the page accessibility, high contrast colors have been used.
 Each textfield has a label, name and id, and placeholder.
