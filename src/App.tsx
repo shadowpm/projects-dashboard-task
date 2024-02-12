@@ -19,10 +19,12 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/edit/:projectId' element={<EditProject />} />
+          <Route path='/edit/:projectId/users' element={<EditProject defaultTab="users" />} />
+          <Route path='/edit/:projectId/devices' element={<EditProject defaultTab="devices" />} />
         </Routes>
       </StateContext.Provider>
     </Router>
   );
-}
+};
 
 export default App;

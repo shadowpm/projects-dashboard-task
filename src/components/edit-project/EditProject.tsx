@@ -12,9 +12,12 @@ import GeneralTab from './general-tab/GeneralTab';
 import { useParams } from 'react-router-dom';
 import { StateContext } from '../../utils/createStateContext';
 
-const EditProject = () => {
-  const [value, setValue] = useState('general');
+interface Props {
+  defaultTab?: string
+}
 
+const EditProject: React.FC<Props> = ({ defaultTab }) => {
+  const [value, setValue] = useState(defaultTab ? defaultTab : 'general');
   const navigate = useNavigate();
   const { projectId } = useParams();
   const { state } = useContext(StateContext);
@@ -22,7 +25,13 @@ const EditProject = () => {
   const projectData = state.find((project) => project.id === Number(projectId));
 
   const handleChange = (event: SyntheticEvent, newValue: string) => {
+    // event.preventDefault();
     setValue(newValue);
+    if (newValue !== 'general') {
+      navigate(`/edit/${projectId}/${newValue}`);
+    } else {
+      navigate(`/edit/${projectId}`);
+    }
   };
 
   if (!projectData) {

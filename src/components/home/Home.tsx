@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { StateContext } from '../../utils/createStateContext';
 import { userMap } from '../../utils/userDataTransformer/userDataTransformer';
 import { devicesMap } from '../../utils/deviceDataTransformer/deviceDataTransformer';
+import { useSearchParams } from 'react-router-dom';
 
 const convertUserIdsToUsersString = (ids: number[]): string => {
   return ids
@@ -20,8 +21,9 @@ const convertDeviceIdsToSerialNumbersString = (ids: number[]): string => {
 };
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = Number(searchParams.get('p') || 1);
 
   const navigate = useNavigate();
   const { state } = useContext(StateContext);
@@ -40,16 +42,13 @@ const Home = () => {
     indexOfLastItem,
   );
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    page: number,
-  ) => {
-    setCurrentPage(page);
+  const changePage = (page: number) => {
+    setSearchParams({ p: String(page) });
   };
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
-    setCurrentPage(1);
+    changePage(1);
   };
 
   return (
@@ -94,7 +93,7 @@ const Home = () => {
             variant='outlined'
             color='primary'
             page={currentPage}
-            onChange={handlePageChange}
+            onChange={(_, p) => changePage(p)}
           />
         </Grid>
       </Grid>
