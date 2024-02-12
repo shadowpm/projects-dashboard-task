@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom';
 import { StateContext } from '../../utils/createStateContext';
 
 interface Props {
-  defaultTab?: string
+  defaultTab?: string;
 }
 
 const EditProject: React.FC<Props> = ({ defaultTab }) => {
